@@ -24,7 +24,7 @@
           <v-icon>notifications</v-icon>
         </v-btn>
         <applications-menu/>
-        <v-menu bottom left>
+        <v-menu bottom left offset-y>
           <v-avatar size="32px" slot="activator">
             <img :src="getUserAvatarUrl">
           </v-avatar>
