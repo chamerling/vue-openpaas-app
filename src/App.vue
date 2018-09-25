@@ -24,7 +24,8 @@
         <applications-menu/>
         <v-menu bottom left offset-y>
           <v-avatar size="32px" slot="activator">
-            <img :src="getUserAvatarUrl">
+            <img v-if="getUserAvatarUrl" :src="getUserAvatarUrl">
+            <v-icon v-else>account_circle</v-icon>
           </v-avatar>
           <v-list>
             <v-list-tile @click.prevent="logout">
