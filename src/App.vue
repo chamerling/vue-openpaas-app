@@ -20,9 +20,7 @@
           class="hidden-sm-and-down"
         ></v-text-field>
         <v-spacer></v-spacer>
-        <v-btn icon>
-          <v-icon>notifications</v-icon>
-        </v-btn>
+        <notification-icon/>
         <applications-menu/>
         <v-menu bottom left offset-y>
           <v-avatar size="32px" slot="activator">
@@ -52,6 +50,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import ApplicationsMenu from '@/components/header/ApplicationsMenu.vue';
+import NotificationIcon from '@/components/header/NotificationIcon.vue';
 
 export default {
   name: 'App',
@@ -71,7 +70,8 @@ export default {
     ...mapGetters(['getUserAvatarUrl'])
   },
   components: {
-    'applications-menu': ApplicationsMenu
+    'applications-menu': ApplicationsMenu,
+    'notification-icon': NotificationIcon
   }
 }
 </script>

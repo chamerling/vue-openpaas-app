@@ -4,5 +4,8 @@ export default {
   session: {
     jwtToken: localStorage.getItem('default_auth_token'),
     user: null
+  },
+  notifications: {
+    unread: 0
   }
 };

@@ -29,3 +29,9 @@ export const fetchJWToken = () => Vue.axios.post('api/jwt/generate').then(respon
 export const setJWTToken = ({ commit }, token) => {
   commit(types.SET_JWT_TOKEN, token);
 };
+
+export const fetchUnreadNotificationsCount = ({ commit }) => {
+  Vue.axios.get('api/user/notifications/unread').then((response) => {
+    commit(types.FETCH_UNREAD_NOTIFICATIONS_COUNT, response.data.unread_count);
+  });
+};

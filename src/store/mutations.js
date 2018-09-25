@@ -15,5 +15,9 @@ export default {
 
   [types.SET_JWT_TOKEN](state, value) {
     state.session.jwtToken = value;
+  },
+
+  [types.FETCH_UNREAD_NOTIFICATIONS_COUNT](state, value) {
+    state.notifications.unread = value;
   }
 };
