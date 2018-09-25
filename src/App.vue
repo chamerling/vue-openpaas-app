@@ -1,5 +1,5 @@
 <template>
-  <v-app id="openpaas">
+  <v-app id="openpaas" :dark="dark">
     <div v-if="$auth.ready()">
       <v-navigation-drawer
         v-if="$auth.check()"
@@ -8,13 +8,21 @@
         fixed
         app
       >
-        <v-list dense>
+        <v-list>
           <v-list-tile @click="">
             <v-list-tile-action>
               <v-icon>settings</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>Settings</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-switch v-model="dark"/>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Dark Mode</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -75,7 +83,8 @@ import NotificationIcon from '@/components/header/NotificationIcon.vue';
 export default {
   name: 'App',
   data: () => ({
-    drawer: true
+    drawer: true,
+    dark: false
   }),
   created () {
     this.$auth.ready(() => {
