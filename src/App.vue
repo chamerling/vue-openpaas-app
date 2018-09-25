@@ -23,9 +23,7 @@
         <v-btn icon>
           <v-icon>notifications</v-icon>
         </v-btn>
-        <v-btn icon>
-          <v-icon>apps</v-icon>
-        </v-btn>
+        <applications-menu/>
         <v-menu bottom left>
           <v-avatar size="32px" slot="activator">
             <img :src="getUserAvatarUrl">
@@ -53,6 +51,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import ApplicationsMenu from '@/components/header/ApplicationsMenu.vue';
 
 export default {
   name: 'App',
@@ -70,6 +69,9 @@ export default {
   },
   computed: {
     ...mapGetters(['getUserAvatarUrl'])
+  },
+  components: {
+    'applications-menu': ApplicationsMenu
   }
 }
 </script>
