@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   // check webpack config
   baseUrl: process.env.OPENPAAS || 'https://openpaas.linagora.com',
   session: {
@@ -7,5 +7,8 @@ export default {
   },
   notifications: {
     unread: 0
+  },
+  ui: {
+    nightMode: JSON.parse(localStorage.getItem('night_mode'))
   }
-};
+});

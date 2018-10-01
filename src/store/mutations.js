@@ -19,5 +19,10 @@ export default {
 
   [types.FETCH_UNREAD_NOTIFICATIONS_COUNT](state, value) {
     state.notifications.unread = value;
+  },
+
+  [types.SWITCH_NIGHT_MODE](state) {
+    state.ui.nightMode = !state.ui.nightMode;
+    localStorage.setItem('night_mode', state.ui.nightMode);
   }
 };

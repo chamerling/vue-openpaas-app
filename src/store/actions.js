@@ -35,3 +35,7 @@ export const fetchUnreadNotificationsCount = ({ commit }) => {
     commit(types.FETCH_UNREAD_NOTIFICATIONS_COUNT, response.data.unread_count);
   });
 };
+
+export const nightModeSwitch = ({ commit }) => {
+  commit(types.SWITCH_NIGHT_MODE);
+};
