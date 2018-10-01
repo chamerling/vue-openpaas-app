@@ -21,9 +21,9 @@
       </v-navigation-drawer>
       <v-toolbar
         v-if="$auth.check()"
-        clipped-left
-        color="blue"
+        :color="color"
         dark
+        clipped-left
         app
         fixed
       >
@@ -67,8 +67,8 @@
             <v-divider/>
             <v-list-tile avatar @click.prevent="nightMode">
               <v-list-tile-content>
-              <v-list-tile-title>Night mode</v-list-tile-title>
-            </v-list-tile-content>
+                <v-list-tile-title>Night mode</v-list-tile-title>
+              </v-list-tile-content>
               <v-list-tile-action>
                 <v-icon id="moon" color="grey lighten-1">brightness_2</v-icon>
             </v-list-tile-action>
@@ -120,6 +120,8 @@ export default {
   computed: {
     ...mapGetters(['getUserAvatarUrl', 'getUserName', 'getUserEmail']),
     color() {
+      return this.dark ? 'black' : 'blue';
+    }
   },
   components: {
     'applications-menu': ApplicationsMenu,
