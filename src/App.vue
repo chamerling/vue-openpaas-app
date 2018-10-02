@@ -8,16 +8,7 @@
         fixed
         app
       >
-        <v-list>
-          <v-list-tile @click="">
-            <v-list-tile-action>
-              <v-icon>settings</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Settings</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
+        <sidebar/>
       </v-navigation-drawer>
       <v-toolbar
         v-if="$auth.check()"
@@ -62,6 +53,7 @@ import { mapGetters } from 'vuex';
 import ApplicationsMenu from '@/components/header/ApplicationsMenu.vue';
 import UserMenu from '@/components/header/UserMenu.vue';
 import NotificationIcon from '@/components/header/NotificationIcon.vue';
+import Sidebar from '@/components/Sidebar.vue';
 
 export default {
   name: 'App',
@@ -84,7 +76,8 @@ export default {
   components: {
     'applications-menu': ApplicationsMenu,
     'user-menu': UserMenu,
-    'notification-icon': NotificationIcon
+    'notification-icon': NotificationIcon,
+    'sidebar': Sidebar
   }
 }
 </script>
