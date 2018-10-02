@@ -45,9 +45,9 @@ export default {
         //fetchUser: false
       })
         .then((response) => {
-          this.$store.dispatch('setJWTToken', response.data);
+          this.$store.dispatch('session/setJWTToken', response.data);
           // TODO Fetch user CAN BE DONE BY vue-auth
-          this.$store.dispatch('fetchUser');
+          this.$store.dispatch('session/fetchUser');
           return response.data;
         }, (err) => {
           // TODO: Set error and display a message

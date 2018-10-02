@@ -7,7 +7,7 @@
   export default {
     name: 'Home',
     computed: {
-      ...mapGetters(['getUserName'])
+      ...mapGetters('session', ['getUserName'])
     }
   }
 </script>

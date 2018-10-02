@@ -42,17 +42,22 @@ export default {
   name: 'user-menu',
   methods: {
     logout() {
-      this.$store.dispatch('logout').then(() => {
+      this.$store.dispatch('session/logout').then(() => {
         this.$router.push({name: 'Login'});
       });
     },
 
     nightMode() {
-      this.$store.dispatch('nightModeSwitch')
+      this.$store.dispatch('ui/nightModeSwitch')
     }
   },
   computed: {
-    ...mapGetters(['getUserAvatarUrl', 'getUserName', 'getUserEmail', 'getNightMode']),
+    ...mapGetters({
+      getUserAvatarUrl: 'session/getUserAvatarUrl',
+      getUserName: 'session/getUserName',
+      getUserEmail: 'session/getUserEmail',
+      getNightMode: 'ui/getNightMode'
+    })
   }
 }
 </script>

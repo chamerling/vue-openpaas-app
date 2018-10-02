@@ -17,11 +17,11 @@ export default {
     }
   },
   computed: mapState({
-    notificationsCount: state => state.notifications.count
+    notificationsCount: state => state.usernotifications.unread
   }),
   methods: {
     updateNotifications() {
-      this.$store.dispatch('fetchUnreadNotificationsCount')
+      this.$store.dispatch('usernotifications/fetchUnreadNotificationsCount')
     }
   },
   created: function() {

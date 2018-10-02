@@ -70,13 +70,13 @@ export default {
   }),
   created () {
     this.$auth.ready(() => {
-      this.$store.dispatch('fetchUser');
+      this.$store.dispatch('session/fetchUser');
     });
   },
   methods: {
   },
   computed: {
-    ...mapGetters(['getNightMode']),
+    ...mapGetters('ui', ['getNightMode']),
     color() {
       return this.getNightMode ? 'black' : 'blue';
     }

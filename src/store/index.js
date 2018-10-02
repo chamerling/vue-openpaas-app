@@ -6,10 +6,18 @@ import * as getters from './getters';
 import state from './state';
 import plugins from './plugins';
 import mutations from './mutations';
+import session from './modules/session';
+import ui from './modules/ui';
+import usernotifications from './modules/user-notification';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    session,
+    ui,
+    usernotifications
+  },
   state: state(),
   actions,
   getters,
