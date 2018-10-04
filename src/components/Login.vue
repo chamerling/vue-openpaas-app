@@ -15,7 +15,10 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn @click="login">Login</v-btn>
+                <v-btn
+                  :disabled="logMeIn"
+                  :loading="logMeIn"
+                  @click="login">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -28,12 +31,14 @@
 export default {
   data() {
     return {
+      logMeIn: false,
       email: null,
       password: null
     };
   },
   methods: {
     login() {
+      this.logMeIn = true;
       this.$auth.login({
         url: 'api/jwt/generate',
         auth: {
@@ -44,14 +49,18 @@ export default {
         redirect: { name: 'Home' },
         //fetchUser: false
       })
-        .then((response) => {
-          this.$store.dispatch('session/setJWTToken', response.data);
-          // TODO Fetch user CAN BE DONE BY vue-auth
-          this.$store.dispatch('session/fetchUser');
-          return response.data;
-        }, (err) => {
-          // TODO: Set error and display a message
-        });
+      .then(response => {
+        this.$store.dispatch('session/setJWTToken', response.data);
+        // TODO Fetch user CAN BE DONE BY vue-auth
+        this.$store.dispatch('session/fetchUser');
+        return response.data;
+      })
+      .catch(err => {
+        // TODO: Set error and display a message
+      })
+      .finally(() => {
+        setTimeout(() => (this.logMeIn = false), 300);
+      });
     }
   }
 };
