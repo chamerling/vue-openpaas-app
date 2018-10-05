@@ -4,7 +4,7 @@
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
+              <v-toolbar :dark="isNightMode" :color="getMainColor">
                 <v-toolbar-title>OpenPaaS Login</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -35,6 +37,9 @@ export default {
       email: null,
       password: null
     };
+  },
+  computed: {
+    ...mapGetters('ui', ['isNightMode', 'getMainColor'])
   },
   methods: {
     login() {
