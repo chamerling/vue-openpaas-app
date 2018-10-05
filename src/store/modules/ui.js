@@ -3,6 +3,12 @@ const state = {
   nightMode: JSON.parse(localStorage.getItem('night_mode'))
 };
 
+const actions = {
+  nightModeSwitch({ commit }) {
+    commit('switchNightMode');
+  }
+};
+
 const mutations = {
   switchNightMode(state) {
     state.nightMode = !state.nightMode;
@@ -13,12 +19,6 @@ const mutations = {
 const getters = {
   getNightMode(state) {
     return !!state.nightMode;
-  }
-};
-
-const actions = {
-  nightModeSwitch({ commit }) {
-    commit('switchNightMode');
   }
 };
 
