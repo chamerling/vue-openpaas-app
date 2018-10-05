@@ -71,10 +71,10 @@ export default {
     ...mapGetters('ui', ['isNightMode', 'getMainColor'])
   },
   components: {
-    'applications-menu': ApplicationsMenu,
-    'user-menu': UserMenu,
-    'notification-icon': NotificationIcon,
-    'sidebar': Sidebar
+    ApplicationsMenu,
+    UserMenu,
+    NotificationIcon,
+    Sidebar
   }
 }
 </script>
