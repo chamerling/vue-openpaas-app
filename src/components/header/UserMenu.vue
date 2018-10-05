@@ -56,7 +56,7 @@ export default {
       getUserAvatarUrl: 'session/getUserAvatarUrl',
       getUserName: 'session/getUserName',
       getUserEmail: 'session/getUserEmail',
-      getNightMode: 'ui/getNightMode'
+      isNightMode: 'ui/isNightMode'
     })
   }
 }

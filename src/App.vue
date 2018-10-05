@@ -1,5 +1,5 @@
 <template>
-  <v-app id="openpaas" :dark="getNightMode">
+  <v-app id="openpaas" :dark="isNightMode">
     <div v-if="$auth.ready()">
       <v-navigation-drawer
         v-if="$auth.check()"
@@ -12,7 +12,7 @@
       </v-navigation-drawer>
       <v-toolbar
         v-if="$auth.check()"
-        :color="color"
+        :color="getMainColor"
         dark
         clipped-left
         app
@@ -68,10 +68,7 @@ export default {
   methods: {
   },
   computed: {
-    ...mapGetters('ui', ['getNightMode']),
-    color() {
-      return this.getNightMode ? 'black' : 'blue';
-    }
+    ...mapGetters('ui', ['isNightMode', 'getMainColor'])
   },
   components: {
     'applications-menu': ApplicationsMenu,

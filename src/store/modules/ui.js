@@ -17,8 +17,12 @@ const mutations = {
 };
 
 const getters = {
-  getNightMode(state) {
+  isNightMode(state) {
     return !!state.nightMode;
+  },
+
+  getMainColor(state, getters) {
+    return getters.isNightMode ? 'black' : 'blue';
   }
 };
 
