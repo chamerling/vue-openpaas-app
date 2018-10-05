@@ -24,10 +24,6 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-snackbar v-model="error.show" color="error" :timeout="error.timeout">
-      Login issue, try again
-      <v-btn dark flat @click="error.show = false">Close</v-btn>
-    </v-snackbar>
   </v-content>
 </template>
 
@@ -40,10 +36,6 @@ export default {
       logMeIn: false,
       email: null,
       password: null,
-      error: {
-        show: false,
-        timeout: 3000
-      }
     };
   },
   computed: {
@@ -52,7 +44,6 @@ export default {
   methods: {
     login() {
       this.logMeIn = true;
-      this.error.show = false;
       this.$auth.login({
         url: 'api/jwt/generate',
         auth: {
@@ -70,7 +61,7 @@ export default {
         return response.data;
       })
       .catch(err => {
-        this.error.show = true;
+        this.$store.dispatch('ui/displaySnackbar', { message: 'Login error, please retry' });
       })
       .finally(() => {
         setTimeout(() => (this.logMeIn = false), 300);

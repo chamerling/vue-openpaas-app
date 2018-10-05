@@ -45,6 +45,7 @@
     <div v-if="!$auth.ready()">
       <v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>
     </div>
+    <snackbar/>
   </v-app>
 </template>
 
@@ -54,6 +55,7 @@ import ApplicationsMenu from '@/components/header/ApplicationsMenu.vue';
 import UserMenu from '@/components/header/UserMenu.vue';
 import NotificationIcon from '@/components/header/NotificationIcon.vue';
 import Sidebar from '@/components/Sidebar.vue';
+import Snackbar from '@/components/Snackbar.vue';
 
 export default {
   name: 'App',
@@ -74,7 +76,8 @@ export default {
     ApplicationsMenu,
     UserMenu,
     NotificationIcon,
-    Sidebar
+    Sidebar,
+    Snackbar
   }
 }
 </script>
