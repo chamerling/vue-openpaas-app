@@ -13,16 +13,10 @@
         <v-container grid-list-xl fluid>
           <v-layout row wrap>
             <v-flex xs4 d-flex>
-              <v-icon large color="blue">home</v-icon>
+              <v-icon large color="blue" @click="goTo('Home')">home</v-icon>
             </v-flex>
             <v-flex xs4 d-flex>
-              <v-icon large color="blue">mail</v-icon>
-            </v-flex>
-            <v-flex xs4 d-flex>
-              <v-icon large color="blue">contacts</v-icon>
-            </v-flex>
-            <v-flex xs4 d-flex>
-              <v-icon large color="blue">calendar_today</v-icon>
+              <v-icon large color="blue" @click="goTo('VideoConference')">video_call</v-icon>
             </v-flex>
             <v-flex xs4 d-flex>
               <v-icon large color="blue">settings</v-icon>
@@ -38,6 +32,11 @@
 export default {
   // TODO: Menu items should come from the server
   data: () => ({
-  })
+  }),
+  methods: {
+    goTo(name) {
+      this.$router.push({ name });
+    }
+  }
 }
 </script>
