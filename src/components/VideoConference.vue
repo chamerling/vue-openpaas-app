@@ -19,26 +19,47 @@
     computed: {
       ...mapGetters('session', ['getUserName', 'getUserAvatarUrl', 'getUserEmail'])
     },
-    mounted() {
-      this.videoConference = new JitsiMeetExternalAPI('janus.hubl.in', {
-        // TODO: Get the room name from the router
-        roomName: 'OpenPaaSRoom',
-        parentNode: this.$refs.jitsivideo,
-        interfaceConfigOverwrite: {
-          SHOW_JITSI_WATERMARK: false,
-          SHOW_BRAND_WATERMARK: false,
-          SHOW_WATERMARK_FOR_GUESTS: false
-        },
-        onload: event => {
-          this.loaded = true;
-        }
-      });
+    methods: {
+      openConference(roomName) {
+        this.videoConference = new JitsiMeetExternalAPI('janus.hubl.in', {
+          // TODO: Get the room name from the router
+          roomName,
+          parentNode: this.$refs.jitsivideo,
+          configOverwrite: {
+            enableClosePage: false,
+            // startAudioOnly: false, // to avoid all video streams
+          },
+          interfaceConfigOverwrite: {
+            SHOW_JITSI_WATERMARK: false,
+            SHOW_BRAND_WATERMARK: false,
+            SHOW_WATERMARK_FOR_GUESTS: false,
+            TOOLBAR_BUTTONS: [
+            'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
+            'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+            'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+            'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
+            'tileview'
+            ],
+          },
+          onload: event => {
+            this.loaded = true;
+          }
+        });
 
-      this.videoConference.on('videoConferenceJoined', () => {
-        this.videoConference.executeCommand('avatarUrl', this.getUserAvatarUrl);
-        this.videoConference.executeCommand('displayName', this.getUserName);
-        this.videoConference.executeCommand('email', this.getUserEmail);
-      });
+        this.videoConference.on('videoConferenceJoined', () => {
+          this.videoConference.executeCommand('avatarUrl', this.getUserAvatarUrl);
+          this.videoConference.executeCommand('displayName', this.getUserName);
+          this.videoConference.executeCommand('email', this.getUserEmail);
+        });
+
+        this.videoConference.on('readyToClose', () => {
+          this.videoConference.dispose();
+          this.videoConference = null;
+        });
+      }
+    },
+    mounted() {
+      this.openConference('OpenPaaSJitsi');
     }
   }
 </script>
